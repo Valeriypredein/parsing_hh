@@ -42,14 +42,14 @@ def find_job(tag):
                 else:
                     salary = salary.text
                 name_company = div_tag.find("span", class_="company-info-text--O32pGCRW0YDmp3BHuNOP").text
-                city = div_tag.find("span", class_="fake-magritte-primary-text--qmdoVdtVX3UWtBb3Q7Qj").text
+                city = div_tag.find("span", {"data-qa":"vacancy-serp__vacancy-address"}).text
 
                 vacancy_data = {
                     "вакансия": name_vac,
-                    "ссылка": link,
-                    "зп": salary,
                     "название компании": name_company,
-                    "город": city
+                    "зарплата": salary,
+                    "город": city,
+                    "ссылка": link,
                 }
                 final_list.append(vacancy_data)
     return final_list
